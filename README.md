@@ -129,4 +129,6 @@ ShadowsocksR-libev for OpenWrt
 错误排除
 ---
    错误字样: ```error: MBEDTLS_CAMELLIA_C required```  
-   解决方案: ```rm -rf package/libs/mbedtls```
+   解决方案: 
+   在package/libs/mbedtls/patches/200-config.patch下第163行，补丁注释掉了MBEDTLS_CAMELLIA_C宏："+//#define MBEDTLS_CAMELLIA_C"。
+去掉双斜杠表示启用宏，保存重新make即可："+#define MBEDTLS_CAMELLIA_C"
